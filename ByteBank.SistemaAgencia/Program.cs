@@ -12,41 +12,24 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            //DateTime dataFimPagamento = new DateTime(2022, 1, 20);
-            //DateTime dataCorrente = DateTime.Now;
+            string urlParametros = "https://www.bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&valor=1500";
+            string urlTesteInicio = "https://www.bytebank.com";
+            string urlTesteFim = "valor=1500";
 
-            //TimeSpan diferenca = dataCorrente - dataFimPagamento;
-            //TimeSpan diferenca = TimeSpan.FromMinutes(40);
-            //string msg = "vencimento em " + TimeSpanHumanizeExtensions.Humanize(diferenca);
+            Console.WriteLine("verificação url bytebank: " + urlParametros.StartsWith(urlTesteInicio));//os 3 casos são case sensitive
+            Console.WriteLine("verificaçãp url bytebank: " + urlParametros.EndsWith(urlTesteFim));     //os 3 casos são case sensitive
+            Console.WriteLine("verificação url bytebank: " + urlParametros.Contains(urlTesteInicio));  //os 3 casos são case sensitive
+                                                                                                       
+            ExtratorValorDeArgumentosURL extrator = new ExtratorValorDeArgumentosURL(urlParametros);
 
+            Console.WriteLine("Valor de moeda origem: " + extrator.GetValor("moedaOrigEm"));
+            Console.WriteLine("Valor de moeda destino: " + extrator.GetValor("moedaDEStinO"));
+            Console.WriteLine("Valor: " + extrator.GetValor("VAlor"));
 
-            //Console.WriteLine(dataCorrente);
-            //Console.WriteLine(dataFimPagamento);
+            //string testeRemocao = "primeiraParte&parteParaRemover";
+            //int indiceEComercial = testeRemocao.IndexOf('&');
+            //Console.WriteLine(testeRemocao.Remove(indiceEComercial));
 
-            //Console.WriteLine(msg);
-
-            //ExtratorValorDeArgumentosURL extrator = new ExtratorValorDeArgumentosURL(null);
-
-            string textoVazio = "";
-            string textoNulo = null;
-            string textoQualquer = "kjdskldjsl";
-
-            Console.WriteLine(String.IsNullOrEmpty(textoVazio));
-            Console.WriteLine(String.IsNullOrEmpty(textoNulo));
-            Console.WriteLine(String.IsNullOrEmpty(textoQualquer));
-            
-
-            Console.ReadLine();
-
-            string url = "pagina?moedaOrigem=real&moedaDestino=dolar";
-
-            int indiceInterrogacao = url.IndexOf('?') + 1;
-
-            Console.WriteLine(url);
-
-            string argumentos = url.Substring(indiceInterrogacao);
-
-            Console.WriteLine(argumentos);
 
 
             Console.ReadLine();
