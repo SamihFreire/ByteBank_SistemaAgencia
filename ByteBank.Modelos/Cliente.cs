@@ -13,7 +13,7 @@ namespace ByteBank.Modelos
         public string Profissao { get; set; }
 
         public override bool Equals(object obj)
-        {
+        {                                          // caso fosse feito o cast assim: (Cliente)obj e viesse um objeto que nao fosse do tipo cliente ocorreria um Exceção
             Cliente outroCliente = obj as Cliente; // Fazendo cast do obj em Cliente com a palavra reservada AS, caso nao consiga, passa null para outroCliente
 
             if(outroCliente == null)
