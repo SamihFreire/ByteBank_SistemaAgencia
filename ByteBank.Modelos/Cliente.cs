@@ -14,7 +14,7 @@ namespace ByteBank.Modelos
 
         public override bool Equals(object obj)
         {
-            Cliente outroCliente = obj as Cliente; // Tenta converter obj em Cliente, caso nao consiga, passa null para outroCliente
+            Cliente outroCliente = obj as Cliente; // Fazendo cast do obj em Cliente com a palavra reservada AS, caso nao consiga, passa null para outroCliente
 
             if(outroCliente == null)
             {
