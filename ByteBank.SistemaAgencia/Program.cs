@@ -13,6 +13,51 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
+            ContaCorrente[] contas = new ContaCorrente[]
+            {
+                new ContaCorrente(242, 23423),
+                new ContaCorrente(565, 87654),
+                new ContaCorrente(846, 57474)
+            };
+
+
+            for(int i = 0; i < contas.Length; i++)
+            {
+                ContaCorrente contaAtual = contas[i];
+                Console.WriteLine($"Conta {i} - A:{contaAtual.Agencia} - N: {contaAtual.Numero}");
+            }
+
+            Console.ReadLine();
+        }
+
+        static void TestaArrayInt()
+        {
+            int[] idades = new int[5];
+            int acumulador = 0;
+
+            idades[0] = 20;
+            idades[1] = 15;
+            idades[2] = 28;
+            idades[3] = 35;
+            idades[4] = 50;
+
+            for (int i = 0; i < idades.Length; i++)
+            {
+                int idade = idades[i];
+
+                Console.WriteLine($"Acessando o array idades no índice {i}");
+                Console.WriteLine($"Valor de idades[{i}] = {idade}");
+
+                acumulador += idade;
+            }
+
+            int media = acumulador / idades.Length;
+
+            Console.WriteLine($"Média de idades = {media}");
+            Console.ReadLine();
+        }
+        static void teste()
+        {
             Cliente carlos_1 = new Cliente();
             carlos_1.Nome = "Carlos";
             carlos_1.CPF = "458.623.120-03";
@@ -44,7 +89,7 @@ namespace ByteBank.SistemaAgencia
             Match match = Regex.Match(textoDeTeste, padrao);
 
             Console.WriteLine("Existe o numero: " + Regex.IsMatch(textoDeTeste, padrao));
-            if(Regex.IsMatch(textoDeTeste, padrao)) 
+            if (Regex.IsMatch(textoDeTeste, padrao))
                 Console.WriteLine("numero: " + match.Value);
             Console.ReadLine();
 
@@ -60,7 +105,7 @@ namespace ByteBank.SistemaAgencia
             Console.WriteLine("verificação url bytebank: " + urlParametros.StartsWith(urlTesteInicio));//os 3 casos são case sensitive
             Console.WriteLine("verificaçãp url bytebank: " + urlParametros.EndsWith(urlTesteFim));     //os 3 casos são case sensitive
             Console.WriteLine("verificação url bytebank: " + urlParametros.Contains(urlTesteInicio));  //os 3 casos são case sensitive
-                                                                                                       
+
             ExtratorValorDeArgumentosURL extrator = new ExtratorValorDeArgumentosURL(urlParametros);
 
             Console.WriteLine("Valor de moeda origem: " + extrator.GetValor("moedaOrigEm"));
@@ -74,7 +119,6 @@ namespace ByteBank.SistemaAgencia
 
 
             Console.ReadLine();
-            
         }
 
     }
