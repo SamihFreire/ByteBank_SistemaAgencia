@@ -13,27 +13,45 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
+            Console.WriteLine($"Soma {SomaVarios(1,2,3,4)}");
+
+            Console.ReadLine();
+        }
+
+        static void TestaListaDeContaCorrente()
+        {
             ListaDeContaCorrente lista = new ListaDeContaCorrente();
 
             ContaCorrente contaDoGui = new ContaCorrente(111111111, 222222222);
 
-            lista.adicionar(contaDoGui);
 
-            lista.adicionar(new ContaCorrente(654654, 654646));
-            lista.adicionar(new ContaCorrente(654654, 654333));
-            lista.adicionar(new ContaCorrente(654654, 654333));
-            lista.adicionar(new ContaCorrente(654654, 654333));
-            lista.adicionar(new ContaCorrente(654654, 654333));
-            lista.adicionar(new ContaCorrente(654654, 654333));
+            ContaCorrente[] contas = new ContaCorrente[]
+            {
+                contaDoGui,
+                new ContaCorrente(654654, 654646),
+                new ContaCorrente(654654, 654333),
+                new ContaCorrente(654654, 654333)
+            };
 
+            lista.AdicionarVarios(contas);
 
-            lista.EscreverListaNaTela();
+            lista.AdicionarVarios(contaDoGui, new ContaCorrente(654654, 654646), new ContaCorrente(654654, 654333)); //Se utilizando do Params 
 
-            lista.Remover(contaDoGui);
+            for (int i = 0; i < lista.Tamanho; i++)
+            {
+                ContaCorrente itemAtual = lista[i];
+                Console.WriteLine($"Item na posição {i} = Conta {itemAtual.Numero} / {itemAtual.Agencia}");
+            }
+        }
 
-            lista.EscreverListaNaTela();
-          
-            Console.ReadLine();
+        static int SomaVarios(params int[] numeros)
+        {
+            int acumulador = 0;
+            foreach(int numero in numeros)
+            {
+                acumulador += numero;
+            }
+            return acumulador;
         }
 
         static void TestaArrayDeContaCorrente()
@@ -52,7 +70,6 @@ namespace ByteBank.SistemaAgencia
                 Console.WriteLine($"Conta {i} - A:{contaAtual.Agencia} - N: {contaAtual.Numero}");
             }
 
-            Console.ReadLine();
         }
 
         static void TestaArrayInt()
@@ -79,7 +96,7 @@ namespace ByteBank.SistemaAgencia
             int media = acumulador / idades.Length;
 
             Console.WriteLine($"Média de idades = {media}");
-            Console.ReadLine();
+
         }
 
 
@@ -143,9 +160,6 @@ namespace ByteBank.SistemaAgencia
             //int indiceEComercial = testeRemocao.IndexOf('&');
             //Console.WriteLine(testeRemocao.Remove(indiceEComercial));
 
-
-
-            Console.ReadLine();
         }
 
     }

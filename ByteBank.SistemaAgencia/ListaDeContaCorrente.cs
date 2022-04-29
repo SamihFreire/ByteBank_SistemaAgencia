@@ -13,12 +13,20 @@ namespace ByteBank.SistemaAgencia
         private ContaCorrente[] _itens;
         private int _proximaPosicao;
 
+        public int Tamanho 
+        { 
+            get
+            { 
+                return _proximaPosicao; 
+            } 
+        }
+
         public ListaDeContaCorrente(int capacidadeInicial = 5) //Adicionando um valor padrão ao construtor caso nao seja informado
         {
             _itens = new ContaCorrente[capacidadeInicial];
             _proximaPosicao = 0;
         }
-        public void adicionar(ContaCorrente item)
+        public void Adicionar(ContaCorrente item)
         {
             VerificarCapacidade(_proximaPosicao + 1);
 
@@ -26,6 +34,14 @@ namespace ByteBank.SistemaAgencia
 
             _itens[_proximaPosicao] = item;
             _proximaPosicao++;
+        }
+
+        public void AdicionarVarios(params ContaCorrente[] itens) //Params possibilita passar varios intens por parametro
+        {
+            foreach(ContaCorrente conta in itens)
+            {
+                Adicionar(conta);
+            }  
         }
 
         public void Remover(ContaCorrente item)
@@ -51,15 +67,14 @@ namespace ByteBank.SistemaAgencia
             _itens[_proximaPosicao] = null;
         }
 
-        public void EscreverListaNaTela()
+        public ContaCorrente GetItemNoIndice(int indice)
         {
-            Console.WriteLine("Escrevendo Lista Na Tela:");
-            for (int i = 0; i < _proximaPosicao; i++)
+            if(indice < 0 || indice >= _proximaPosicao)
             {
-                ContaCorrente conta = _itens[i];
-
-                Console.WriteLine($"Conta indice {i}: numero {conta.Agencia}  {conta.Numero}");
+                throw new ArgumentOutOfRangeException(nameof(indice));
             }
+
+            return _itens[indice];
         }
 
         private void VerificarCapacidade(int tamanhoNecessario)
@@ -88,6 +103,14 @@ namespace ByteBank.SistemaAgencia
             }
 
             _itens = novoArray;
+        }
+
+        public ContaCorrente this[int indice]  //Definindo Indexadores - criando a mesma sintaxe do array
+        {
+            get
+            {
+                return GetItemNoIndice(indice);
+            }
         }
     }
 }
