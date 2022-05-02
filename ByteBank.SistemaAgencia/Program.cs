@@ -13,9 +13,48 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            Console.WriteLine($"Soma {SomaVarios(1,2,3,4)}");
+            List<int> idades= new List<int>();
 
-            Console.ReadLine();
+            idades.Add(1);
+            idades.Add(12);
+            idades.Add(13);
+            idades.Add(14);
+            idades.Add(15);
+            idades.Add(16);
+
+            idades.Remove(15);
+
+            // oi :) vai dar certo agr raul
+            ListExtensoes.AdicionarVarios(idades, 1, 23, 4, 5);
+
+            idades.AdicionarVarios(212, 121, 313, 13);
+
+            for (int i = 0; i < idades.Count; i++)
+            {
+                Console.WriteLine($"Idade {idades[i]} no indice {i}");
+            }
+
+
+            Console.ReadLine();   
+        }
+
+        static void TestaListaDeObject()
+        {
+            ListaDeObject listaDeIdades = new ListaDeObject();
+
+            listaDeIdades.Adicionar(10);
+            listaDeIdades.Adicionar(5);
+            listaDeIdades.Adicionar(4);
+            listaDeIdades.Adicionar(9);
+
+            listaDeIdades.AdicionarVarios(1, 2, 3, 4, 5);
+
+            for (int i = 0; i < listaDeIdades.Tamanho; i++)
+            {
+                int idade = (int)listaDeIdades[i];
+
+                Console.WriteLine($"Idade {idade} no indice {i}");
+            }
         }
 
         static void TestaListaDeContaCorrente()
