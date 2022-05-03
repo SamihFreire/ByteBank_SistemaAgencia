@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ByteBank.Modelos;
+using ByteBank.SistemaAgencia.Extensoes;
 using Humanizer;
 
 namespace ByteBank.SistemaAgencia
@@ -24,10 +25,7 @@ namespace ByteBank.SistemaAgencia
 
             idades.Remove(15);
 
-            // oi :) vai dar certo agr raul
-            ListExtensoes.AdicionarVarios(idades, 1, 23, 4, 5);
-
-            idades.AdicionarVarios(212, 121, 313, 13);
+            idades.AdicionarVarios(1, 2, 3);
 
             for (int i = 0; i < idades.Count; i++)
             {
