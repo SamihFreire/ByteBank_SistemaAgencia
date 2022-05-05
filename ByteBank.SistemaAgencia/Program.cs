@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ByteBank.Modelos;
+using ByteBank.SistemaAgencia.Comparadores;
 using ByteBank.SistemaAgencia.Extensoes;
 using Humanizer;
 
@@ -14,26 +15,32 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            List<int> idades= new List<int>();
+            var contas = new List<ContaCorrente>()
+            { new ContaCorrente(341, 25666),
+              new ContaCorrente(123, 32323),
+              new ContaCorrente(432, 34245),
+              new ContaCorrente(432, 1)
+            };
 
-            idades.Add(1);
-            idades.Add(12);
-            idades.Add(13);
-            idades.Add(14);
-            idades.Add(15);
-            idades.Add(16);
+            // contas.Sort(); ~~> Chama a implementação dada em IComparable
 
-            idades.Remove(15);
+            contas.Sort(new ComparadorContaCorrentePorAgencia());
 
-            idades.AdicionarVarios(1, 2, 3);
-
-            for (int i = 0; i < idades.Count; i++)
+            foreach (var conta in contas)
             {
-                Console.WriteLine($"Idade {idades[i]} no indice {i}");
+                Console.WriteLine($"Conta número {conta.Numero}, ag. {conta.Agencia}");
             }
 
 
             Console.ReadLine();   
+        }
+
+        static void TestandoVar()
+        {
+            var idade = 12; // declarando uma variavel com VAR é necessário atribuir na criação, pois dessa forma o var identifica o tipo daquela variavel
+            GerenciadorBonificacao gerenciador = new GerenciadorBonificacao();
+            var gerenciador2 = new GerenciadorBonificacao(); // o gerenciador2 funciona do mesmo jeito que o gerenciador
+
         }
 
         static void TestaListaDeObject()
