@@ -128,7 +128,7 @@ namespace ByteBank.Modelos
             // Retornar negativo quando a instancia precede o obj
             // Retornar zero quando nossa instância e obj forem equivalentes
             // Retornar positivo diferente de zero quando a precedencia for de obj
-
+  
             var outraConta = obj as ContaCorrente; // Realizando cast do parametro que é object para o tipo ContaCorrente, utilizando 'as' para caso nao funcionar atribuir null a variavel outraConta
             
             if(outraConta == null)
